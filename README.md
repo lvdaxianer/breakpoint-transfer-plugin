@@ -30,6 +30,35 @@ This project consists of **frontend** and **backend** parts:
 - **Persistent Storage**: Uses IndexedDB to persist upload progress, supporting recovery after page refresh
 - **Web Worker**: Supports using Web Workers to calculate file hash without blocking the main thread
 
+## Highlights
+
+### Architecture
+
+- **Event-Driven Design**: Uses publish-subscribe pattern for loose coupling between modules
+- **TypeScript-First**: Complete TypeScript type definitions for better developer experience
+- **Modular Architecture**: Clear separation of concerns with dedicated modules for storage, events, tools, and state management
+
+### Core Capabilities
+
+- **Smart Chunking**: Adaptive chunk size based on network speed detection
+- **Auto-Retry**: Configurable retry mechanism with exponential backoff support
+- **State Management**: Comprehensive state tracking for each upload operation
+- **Pause/Resume/Cancel**: Full control over upload lifecycle
+
+### Performance Optimizations
+
+- **Web Worker Offloading**: File hash calculation runs in background thread
+- **IndexedDB Caching**: Persistent storage with optimized key-value indexing
+- **Concurrent Limiter**: PLimit implementation controls parallel uploads
+- **Network Speed Detection**: Dynamic chunk sizing based on real network conditions
+
+### Developer Experience
+
+- **Promise-Based API**: Modern async/await compatible interface
+- **Callback Support**: Optional callbacks for progress tracking
+- **I18n Ready**: Built-in multi-language support (ZH, EN, JA_JP)
+- **Zero-Dependency Core**: Minimal core dependencies for lightweight integration
+
 ## Installation
 
 ```bash

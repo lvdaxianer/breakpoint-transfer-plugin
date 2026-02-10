@@ -2,8 +2,11 @@
 
 [![npm version](https://img.shields.io/npm/v/breakpoint-transfer-plugin.svg)](https://www.npmjs.com/package/breakpoint-transfer-plugin)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
+[![GitHub stars](https://img.shields.io/github/stars/lvdaxianer/breakpoint-transfer-plugin)](https://github.com/lvdaxianer/breakpoint-transfer-plugin)
 
 ---
+
+**GitHub**: https://github.com/lvdaxianer/breakpoint-transfer-plugin
 
 ## Introduction
 

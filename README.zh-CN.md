@@ -8,6 +8,10 @@
 
 **GitHub**: https://github.com/lvdaxianer/breakpoint-transfer-plugin
 
+---
+
+**语言**: [中文](README.zh-CN.md) | [English](README.md)
+
 ## 简介
 
 `breakpoint-transfer-plugin` 是一个用于实现文件断点续传功能的 JavaScript/TypeScript SDK 插件。主要用于大文件上传场景，支持断点续传、秒传、并发控制、进度追踪等功能。

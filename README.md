@@ -8,6 +8,10 @@
 
 **GitHub**: https://github.com/lvdaxianer/breakpoint-transfer-plugin
 
+---
+
+**Language**: [English](README.md) | [中文](README.zh-CN.md)
+
 ## Introduction
 
 `breakpoint-transfer-plugin` is a JavaScript/TypeScript SDK plugin for implementing file breakpoint continuation. It is primarily designed for large file upload scenarios, supporting breakpoint continuation, quick upload, concurrent control, progress tracking, and more.

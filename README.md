@@ -59,6 +59,30 @@ This project consists of **frontend** and **backend** parts:
 - **I18n Ready**: Built-in multi-language support (ZH, EN, JA_JP)
 - **Zero-Dependency Core**: Minimal core dependencies for lightweight integration
 
+## Feature Support Matrix
+
+| Feature | HTTP | HTTPS | localhost |
+|---------|:----:|:-----:|:---------:|
+| Large File Chunk Upload | ✅ | ✅ | ✅ |
+| Quick Upload (Instant) | ❌ | ✅ | ✅ |
+| Breakpoint Continuation | ❌ | ✅ | ✅ |
+| Concurrent Control (Leaky Bucket) | ✅ | ✅ | ✅ |
+| Pause | ✅ | ✅ | ✅ |
+| Same File Mutex Upload | ✅ | ✅ | ✅ |
+| Delete | ✅ | ✅ | ✅ |
+| Web Worker Hash Algorithm | ❌ | ✅ | ✅ |
+| Failure Retry | ✅ | ✅ | ✅ |
+| Hash Algorithm Queue | ✅ | ✅ | ✅ |
+| Persistence (IndexedDB) | ✅ | ✅ | ✅ |
+| Refresh Retention | ✅ | ✅ | ✅ |
+| Error Feedback | ✅ | ✅ | ✅ |
+| I18n (ZH/EN/JA) | ✅ | ✅ | ✅ |
+| Network Speed Adaptation | ✅ | ✅ | ✅ |
+
+**Notes**:
+- ❌ Not supported: Quick upload, breakpoint continuation, and Web Worker require Secure Context (HTTPS or localhost)
+- ✅ Supported: All other features work in all environments
+
 ## Installation
 
 ```bash

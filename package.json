@@ -12,7 +12,9 @@
   "scripts": {
     "lint": "eslint --fix --ext .ts src --quiet",
     "prepare": "husky install",
-    "build": "rollup --config rollup.config.ts --configPlugin typescript"
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
+    "changelog": "node scripts/update-changelog.js",
+    "release": "node scripts/publish-github-release.js"
   },
   "keywords": [
     "upload",

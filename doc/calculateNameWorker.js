@@ -71,7 +71,7 @@ self.addEventListener("message", async (event) => {
 
     newArgs.forEach((currBuffer) => {
       combinedBuffer.set(new Uint8Array(currBuffer), preBuffLength);
-      preBuffLength = currBuffer.byteLength;
+      preBuffLength += currBuffer.byteLength;
     });
 
     return combinedBuffer;

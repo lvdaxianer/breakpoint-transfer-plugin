@@ -27,6 +27,7 @@ import {
 import { Logger } from "./Logger";
 import {
   clearCacheStateHandler,
+  sameFileNeedFailHandler,
   progressNormalOrErrorCompletionHandler,
   restartUploadFileHandler,
   sameFileNeedProceedHandler,
@@ -102,6 +103,17 @@ emitterAndTaker.on(
         )
           // 处理其他相同的文件
           await sameFileNeedProceedHandler(el.uniqueCode!);
+        else if (
+          [
+            UploadProgressState.RetryFailed,
+            UploadProgressState.Canceled,
+            UploadProgressState.RequestError,
+          ].includes(el.type)
+        )
+          await sameFileNeedFailHandler(
+            el.uniqueCode!,
+            el.requestErrorMsg || "same file upload aborted",
+          );
 
         progressNormalOrErrorCompletionHandler(el);
         clearCacheStateHandler(el.uniqueCode!);

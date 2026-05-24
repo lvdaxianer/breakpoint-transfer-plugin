@@ -160,6 +160,36 @@ export async function sameFileNeedProceedHandler(uniqueCode: string) {
 }
 
 /**
+ * 相同文件等待任务失败释放
+ * 当前置任务失败时，避免后续同文件任务永久停留在 OtherUploading 状态
+ *
+ * @param uniqueCode 文件唯一标识
+ * @param errorMsg 失败消息
+ * @author lvdaxianerplus
+ */
+export async function sameFileNeedFailHandler(
+  uniqueCode: string,
+  errorMsg: string,
+) {
+  const map = globalInfoMapping[uniqueCode];
+  if (!isMap(map)) return;
+
+  const calculationHashName = map.get("calculationHashName") as string;
+  const uniqueCodeValues =
+    sameFileUploadStateMapping.current.get(calculationHashName);
+  if (isEmpty(uniqueCodeValues)) return;
+
+  const waitingUniqueCodes = uniqueCodeValues!.filter(
+    (code) => !equals(code, uniqueCode),
+  );
+  sameFileUploadStateMapping.current.delete(calculationHashName);
+
+  for (const code of waitingUniqueCodes) {
+    emitRequestErrorProgressState(code, errorMsg);
+  }
+}
+
+/**
  * 正常 异常结束的事件
  *
  * @author lihh
@@ -489,7 +519,7 @@ export async function startUploadFileNextHandler(
     emitRequestErrorProgressState(uniqueCode, SERVER_REQUEST_FAIL_MSG);
     return;
   }
-  if (res!.success)
+  if (requestNormalReturnHandler(res!, uniqueCode))
     // 表示 合并成功
     emitUploadProgressState(UploadProgressState.Done, uniqueCode);
 }
@@ -800,7 +830,7 @@ export function generatorTask(uniqueCode: string) {
  *
  * @author lihh
  * @param uploadFile 要上传的文件
- * @param callback 默认的回调方法
+ * @param callback 上传完成回调，返回服务端落盘文件名和原始文件名
  */
 export function uploadHandler(
   uploadFile: File,

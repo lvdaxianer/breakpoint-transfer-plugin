@@ -1,13 +1,14 @@
 {
   "name": "breakpoint-transfer-plugin",
-  "version": "v0.0.1",
+  "version": "0.1.0",
   "description": "JavaScript JDK plugin for implementing breakpoint continuation",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "typings": "typings/index.d.ts",
   "files": [
     "dist",
-    "typings"
+    "typings",
+    "doc/calculateNameWorker.js"
   ],
   "scripts": {
     "lint": "eslint --fix --ext .ts src --quiet",

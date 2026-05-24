@@ -90,7 +90,10 @@ export interface CurrentType<T = null> {
 }
 
 // 表示返回类型
-export type ProgressReturnType = [baseDir: string, fileName: string];
+export type ProgressReturnType = [
+  storedFileName: string,
+  originalFileName: string,
+];
 
 // localforage 持久化枚举类型
 export enum LocalforageTypeEnum {
@@ -101,10 +104,10 @@ export enum LocalforageTypeEnum {
 // 表示 请求响应类型
 export type ICommonResponse<T = unknown> = {
   data: T;
-  message?: string;
+  message?: string | null;
   msg?: string;
-  success?: boolean;
-  code: number;
+  success?: boolean | null;
+  code: string | number;
 };
 
 // 表示 http 返回状态
@@ -121,18 +124,18 @@ export enum LanguageEnumType {
 
 // 表示接口类型
 export type IListFilesReq = (
-  calculationHashCode: string,
+  baseDir: string,
   // [number, number] length, consumeSize
 ) => Promise<ICommonResponse<[number, number]>>;
 export type ISectionUploadReq = (
-  calculationHashCode: string,
+  baseDir: string,
   chunkFileName: string,
   formData: FormData,
 ) => Promise<ICommonResponse<boolean>>;
 export type IMergeUploadReq = (
-  calculationHashCode: string,
-  fileName: string,
+  baseDir: string,
+  storedFileName: string,
 ) => Promise<ICommonResponse>;
 export type IVerifyFileExistReq = (
-  calculationHashName: string,
+  storedFileName: string,
 ) => Promise<ICommonResponse<boolean>>;
